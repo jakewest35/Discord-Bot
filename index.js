@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'NjkyNDc0NTA2MDk0MTgyNTAy.XnvDMA.W-81-YyDZhUpjUyR8s_ALE7BaHY';
+require('dotenv').config();
 const PREFIX = '!';
 
 // iterates through the Commands folder and reads in all .js files.
@@ -14,7 +14,7 @@ for (const file of commandFiles) {
     bot.commands.set(command.name, command);
 }
 
-bot.on('ready', () => {
+bot.once('ready', () => {
     console.log('Bot is online.');
 })
 
@@ -49,4 +49,4 @@ bot.on('message', message =>{
 })
 
 // logs the bot into the server
-bot.login(token);
+bot.login(process.env.BOT_TOKEN);
